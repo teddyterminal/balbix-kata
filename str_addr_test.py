@@ -21,5 +21,11 @@ class TestStringAdder(unittest.TestCase):
     def test_two_numbers_bothneg(self):
         self.assertEqual(add("-3,-3"), -6)
 
+    def test_many_numbers(self):
+        self.assertEqual(add("4,5,6,-4"), 11)
+
+    def test_many_numbers_2(self):
+        self.assertEqual(add("0,1,2,6"), 9)
+
 if __name__ == '__main__':
     unittest.main()
