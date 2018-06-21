@@ -30,5 +30,8 @@ class TestStringAdder(unittest.TestCase):
     def test_newline(self):
         self.assertEqual(add("0\n1\n2"), 3)
 
+    def test_newline_commas(self):
+        self.assertEqual(add("0,1\n6\n-4,-5"), -2)
+
 if __name__ == '__main__':
     unittest.main()
