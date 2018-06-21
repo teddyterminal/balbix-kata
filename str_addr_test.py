@@ -27,5 +27,8 @@ class TestStringAdder(unittest.TestCase):
     def test_many_numbers_2(self):
         self.assertEqual(add("0,1,2,6"), 9)
 
+    def test_newline(self):
+        self.assertEqual(add("0\n1\n2"), 3)
+
 if __name__ == '__main__':
     unittest.main()
