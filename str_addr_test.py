@@ -35,7 +35,7 @@ class TestStringAdder(unittest.TestCase):
             add("-3, -5")
             self.assertFail()
         except Exception as e:
-            self.assertEqual(str(e), "negatives not allowed")
+            self.assertEqual(str(e), "negatives not allowed: (-3, -5)")
 
 
 
