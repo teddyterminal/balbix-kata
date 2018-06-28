@@ -1,21 +1,24 @@
 import re
 
-def add(str):
+def add(s):
     delim = [",","\n"]
-    if str[0:2] == "//":
-        delim.append(str[2])
-        str = str[4:]
+    if s[0:2] == "//":
+        delim.append(s[2])
+        s = s[4:]
 
-    sf = []
-    if str == "":
+    if s == "":
         return 0
     delim = "|".join(delim)
-    s = re.split(delim, str)
+    s = re.split(delim, s)
 
     sum = 0
+    negatives = []
     for val in s:
         if int(val) < 0:
-            raise Exception("negatives not allowed")
+            negatives.append(str(int(val)))
         sum += int(val)
+
+    if (len(negatives) > 0):
+        raise Exception("negatives not allowed: (" + ", ".join(negatives) + ")")
 
     return sum
