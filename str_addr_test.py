@@ -30,6 +30,14 @@ class TestStringAdder(unittest.TestCase):
     def test_no_negatives_allowed(self):
         self.assertRaises(Exception, add, "-3, -5")
 
+    def test_negative_exception_message(self):
+        try:
+            add("-3, -5")
+            self.assertFail()
+        except Exception as e:
+            self.assertEqual(e.message, "negatives not allowed")
+
+
 
 
 if __name__ == '__main__':
