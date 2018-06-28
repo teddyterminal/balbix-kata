@@ -15,7 +15,7 @@ def add(str):
     sum = 0
     for val in s:
         if int(val) < 0:
-            raise Exception
+            raise Exception("negatives not allowed")
         sum += int(val)
 
     return sum
