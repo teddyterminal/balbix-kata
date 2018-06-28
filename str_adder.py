@@ -1,12 +1,19 @@
+import re
+
 def add(str):
+    delim = [",","\n"]
+    if str[0:2] == "//":
+        delim.append(str[2])
+        str = str[4:]
+
+    sf = []
     if str == "":
         return 0
-    s = str.split(",")
-    sf = []
-    for string in s:
-        sf.extend(string.split("\n"))
+    delim = "|".join(delim)
+    s = re.split(delim, str)
+
     sum = 0
-    for val in sf:
+    for val in s:
         sum += int(val)
 
     return sum
