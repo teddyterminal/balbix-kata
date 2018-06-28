@@ -27,6 +27,10 @@ class TestStringAdder(unittest.TestCase):
     def test_new_delimiter(self):
         self.assertEqual(add("//;\n0;1;4"), 5)
 
+    def test_no_negatives_allowed(self):
+        self.assertRaises(Exception, add, "-3, -5")
+
+
 
 if __name__ == '__main__':
     unittest.main()
