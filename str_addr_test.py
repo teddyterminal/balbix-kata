@@ -52,6 +52,15 @@ class TestStringAdder(unittest.TestCase):
     def test_even_longer_length_delimiter(self):
         self.assertEqual(add("//[3.1415926]\n33.141592643.14159265"), 12)
 
+    def test_left_bracket_delimiter(self):
+        self.assertEqual(add("//[\n3[4[5"), 12)
+
+    def test_right_bracket_delimiter(self):
+        self.assertEqual(add("//]\n3]4]5"), 12)
+
+    def test_multiple_brackets_in_delimiter(self):
+        self.assertEqual(add("//[[][]]]]\n3[][]]]4[][]]]5"), 12)
+
 
 
 
