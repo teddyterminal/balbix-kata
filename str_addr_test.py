@@ -37,6 +37,15 @@ class TestStringAdder(unittest.TestCase):
         except Exception as e:
             self.assertEqual(str(e), "negatives not allowed: (-3, -5)")
 
+    def test_ignore_greater_than_1000(self):
+        self.assertEqual(add("3, 1001"), 3)
+
+    def test_multiple_greater_than_1000(self):
+        self.assertEqual(add("1001, 1002, 213485"), 0)
+
+    def test_1000_borderline_not_ignored(self):
+        self.assertEqual(add("1000, 1000, 18"), 2018)
+
 
 
 
