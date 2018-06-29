@@ -16,7 +16,9 @@ def add(s):
     for val in s:
         if int(val) < 0:
             negatives.append(str(int(val)))
-        sum += int(val)
+
+        if (int(val) <= 1000):
+            sum += int(val)
 
     if (len(negatives) > 0):
         raise Exception("negatives not allowed: (" + ", ".join(negatives) + ")")
