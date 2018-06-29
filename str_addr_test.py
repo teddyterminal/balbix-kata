@@ -46,6 +46,12 @@ class TestStringAdder(unittest.TestCase):
     def test_1000_borderline_not_ignored(self):
         self.assertEqual(add("1000, 1000, 18"), 2018)
 
+    def test_longer_length_delimiter(self):
+        self.assertEqual(add("//[***]\n3***4***5"), 12)
+
+    def test_even_longer_length_delimiter(self):
+        self.assertEqual(add("//[3.1415926]\n33.141592643.14159265"), 12)
+
 
 
 
