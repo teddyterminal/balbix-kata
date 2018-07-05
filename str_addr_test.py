@@ -62,7 +62,5 @@ class TestStringAdder(unittest.TestCase):
         self.assertEqual(add("//[[][]]]]\n3[][]]]4[][]]]5"), 12)
 
 
-
-
 if __name__ == '__main__':
     unittest.main()
