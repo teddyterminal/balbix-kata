@@ -1,6 +1,8 @@
 import unittest
+import sys
 from unittest.mock import patch
 from str_adder import add
+import str_adder
 
 class TestStringAdder(unittest.TestCase):
 
@@ -72,6 +74,11 @@ class TestStringAdder(unittest.TestCase):
         self.assertEqual(add("//[***][?!?]\n4***5, 6?!?7"), 22)
         mock_print.assert_called_with(22)
 
+    @patch("str_adder.print")
+    def test_command_line_input(self, mock_print):
+        sys.argv = ["str_adder.py", "scalc", "1, 2, 3"]
+        str_adder.main()
+        mock_print.assert_called_with("The result is 6")
 
 if __name__ == '__main__':
     unittest.main()
