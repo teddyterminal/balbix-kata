@@ -58,5 +58,8 @@ class TestStringAdder(unittest.TestCase):
     def test_even_more_delimiters(self):
         self.assertEqual(add("//[~][!][#][^][?][+]\n3~4!5#6#7^8?9+1+2"), 45)
 
+    def test_long_length_multiple_delimiters(self):
+        self.assertEqual(add("//[***][2.71828182][?!?]\n3?!?4?!?52.718281826***7***8"), 33)
+
 if __name__ == '__main__':
     unittest.main()
