@@ -1,4 +1,5 @@
 import re
+import sys
 
 def add(s):
 
@@ -69,3 +70,12 @@ def process_delimiter(s):
             delim[i] = adj_delim
 
     return delim, s
+
+def main():
+    if len(sys.argv) == 3:
+        if sys.argv[1] == "scalc":
+            x = add(sys.argv[2])
+            print("The result is " + str(x))    
+
+if __name__ == "__main__":
+    main()
