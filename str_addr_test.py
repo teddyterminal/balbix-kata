@@ -55,5 +55,8 @@ class TestStringAdder(unittest.TestCase):
     def test_multiple_delimiters(self):
         self.assertEqual(add("//[!][:]\n3!4:5!6"), 18)
 
+    def test_even_more_delimiters(self):
+        self.assertEqual(add("//[~][!][#][^][?][+]\n3~4!5#6#7^8?9+1+2"), 45)
+
 if __name__ == '__main__':
     unittest.main()
