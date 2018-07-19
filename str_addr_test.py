@@ -80,5 +80,12 @@ class TestStringAdder(unittest.TestCase):
         str_adder.main()
         mock_print.assert_called_with("The result is 6")
 
+    @patch("str_adder.print")
+    def test_longer_command_line_input(self, mock_print):
+        sys.argv = ["str_adder.py", "scalc", "//[***][?!?]\n4***5, 6?!?7"]
+        str_adder.main()
+        mock_print.assert_called_with("The result is 22")
+
+
 if __name__ == '__main__':
     unittest.main()
