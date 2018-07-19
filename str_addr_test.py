@@ -65,7 +65,12 @@ class TestStringAdder(unittest.TestCase):
     @patch("str_adder.print")
     def test_prints_output(self, mock_print):
         self.assertEqual(add("4, 5, 6"), 15)
-        mock_print.assert_called_with("15")
+        mock_print.assert_called_with(15)
+
+    @patch("str_adder.print")
+    def test_prints_output_more_delimiters(self, mock_print):
+        self.assertEqual(add("//[***][?!?]\n4***5, 6?!?7"), 22)
+        mock_print.assert_called_with(22)
 
 
 if __name__ == '__main__':

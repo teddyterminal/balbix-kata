@@ -24,6 +24,7 @@ def add(s):
     if (len(negatives) > 0):
         raise Exception("negatives not allowed: (" + ", ".join(negatives) + ")")
 
+    print(sum)
     return sum
 
 def process_delimiter(s):
