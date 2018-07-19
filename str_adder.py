@@ -60,7 +60,7 @@ def process_delimiter(s):
         for i in range(2, len(delim)):
             adj_delim = ""
             for character in delim[i]:
-                if character in ["[", "]", "*", "+", "?"]:
+                if character in ["[", "]", "*", "+", "?", "^"]:
                     adj_delim = adj_delim + "\\" + character
                 else:
                     adj_delim = adj_delim + character
