@@ -50,8 +50,8 @@ def process_delimiter(s):
         #code to get characters in the custom delimiter that are left brackets for regex
         adj_delim = ""
         for character in delim[2]:
-            if character == "[":
-                adj_delim = adj_delim + "\\["
+            if character in ["[", "]", "*", "+", "?"]:
+                adj_delim = adj_delim + "\\" + character
             else:
                  adj_delim = adj_delim + character
 
