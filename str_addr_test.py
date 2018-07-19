@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from str_adder import add
 
 class TestStringAdder(unittest.TestCase):
@@ -60,6 +61,12 @@ class TestStringAdder(unittest.TestCase):
 
     def test_long_length_multiple_delimiters(self):
         self.assertEqual(add("//[***][2.71828182][?!?]\n3?!?4?!?52.718281826***7***8"), 33)
+
+    @patch("str_adder.print")
+    def test_prints_output(self, mock_print):
+        self.assertEqual(add("4, 5, 6"), 15)
+        mock_print.assert_called_with("15")
+
 
 if __name__ == '__main__':
     unittest.main()
