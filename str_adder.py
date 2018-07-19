@@ -34,27 +34,37 @@ def process_delimiter(s):
     if s[0:2] == "//":            #we have a custom delimiter
         newline = s.index("\n")
 
-        #determine whether the delimiter string (from 2 onwards) has a bracket
-        leftbracket = s[2:].find("[")
-        rightbracket = s[2:newline][::-1].find("]")
+        flag = True
+        s2 = s[2:]
+        while flag == True:
+            #determine whether the delimiter string (from 2 onwards) has a bracket
+            leftbracket = s2.find("[")
+            rightbracket = s2.find("]")
 
-        if leftbracket == -1 or rightbracket == -1: #this is a single custom delimiter
-            delim.append(s[2])
-            s = s[4:]
-        else: #This is a multiple character delimiter
-            leftbracket += 2                                #index of the left bracket of the multi-char delimiter
-            rightbracket = newline - 1 - rightbracket       #index of the right bracket of the multi-char delimiter
-            delim.append(s[leftbracket + 1: rightbracket])
-            s = s[rightbracket + 1:]
+            if leftbracket == -1:
+                flag = False
+                continue
 
-        #code to get characters in the custom delimiter that are left brackets for regex
-        adj_delim = ""
-        for character in delim[2]:
-            if character in ["[", "]", "*", "+", "?"]:
-                adj_delim = adj_delim + "\\" + character
-            else:
-                 adj_delim = adj_delim + character
+            delim.append(s2[leftbracket + 1: rightbracket])
+            s2 = s2[rightbracket + 1:]
 
-        delim[2] = adj_delim
+
+        #still might have single delimiter
+        newline = s2.find("\n")
+        if newline != 0:
+            delim.append(s2[0:newline])
+
+        s = s2
+
+        #code to clear regex
+        for i in range(2, len(delim)):
+            adj_delim = ""
+            for character in delim[i]:
+                if character in ["[", "]", "*", "+", "?"]:
+                    adj_delim = adj_delim + "\\" + character
+                else:
+                    adj_delim = adj_delim + character
+
+            delim[i] = adj_delim
 
     return delim, s
