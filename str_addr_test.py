@@ -1,5 +1,5 @@
 import unittest
-import sys
+import os, sys
 from unittest.mock import patch
 from str_adder import add
 import str_adder
@@ -76,13 +76,13 @@ class TestStringAdder(unittest.TestCase):
 
     @patch("str_adder.print")
     def test_command_line_input(self, mock_print):
-        sys.argv = ["str_adder.py", "scalc", "1, 2, 3"]
+        sys.argv = ["scalc", "1, 2, 3"]
         str_adder.main()
         mock_print.assert_called_with("The result is 6")
 
     @patch("str_adder.print")
     def test_longer_command_line_input(self, mock_print):
-        sys.argv = ["str_adder.py", "scalc", "//[***][?!?]\n4***5, 6?!?7"]
+        sys.argv = ["scalc", "//[***][?!?]\n4***5, 6?!?7"]
         str_adder.main()
         mock_print.assert_called_with("The result is 22")
 
